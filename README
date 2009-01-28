@@ -1,0 +1,8 @@
+This is a drop-in replacement for glibc nscd which is designed
+for simplicity and stability.
+
+Build instructions:
+
+gcc -Os -o nscd nscd.c
+
+For more info please see comments in nscd.c
