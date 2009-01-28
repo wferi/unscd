@@ -1,0 +1,6 @@
+unscd (0.36-1) unstable; urgency=low
+
+  * Initial packaging for Debian
+
+ -- Don Armstrong <don@debian.org>  Tue, 27 Jan 2009 16:53:56 -0800
+
