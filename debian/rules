@@ -3,7 +3,7 @@
 #DH_VERBOSE = 1
 
 
-PREFIX=$(shell pwd)/debian/nscd/usr
+PREFIX=$(shell pwd)/debian/unscd/
 
 CFLAGS = -Wall -g
 
@@ -39,9 +39,10 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-
-	$(INSTALL) -d $(PREFIX)/sbin/
-	$(INSTALL) -t $(PREFIX)/sbin/ nscd
+	$(INSTALL) -d $(PREFIX)/usr/sbin/
+	$(INSTALL) -t $(PREFIX)/usr/sbin/ nscd
+	$(INSTALL) -d $(PREFIX)/etc/
+	$(INSTALL) -t $(PREFIX)/etc/ debian/nscd.conf
 
 binary-indep:
 
