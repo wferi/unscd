@@ -20,7 +20,7 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 
-	gcc $(CFLAGS) -o nscd nscd-*.c
+	gcc $(CFLAGS) -o nscd nscd.c
 
 	touch $@
 
