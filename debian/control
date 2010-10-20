@@ -1,15 +1,13 @@
 Source: unscd
 Section: admin
 Priority: extra
-Standards-Version: 3.8.3
+Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 5), groff-base
 Maintainer: Don Armstrong <don@debian.org>
 
 Package: unscd
-Section: admin
-Priority: extra
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Conflicts: nscd
 Replaces: nscd
 Provides: nscd
