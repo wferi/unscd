@@ -1,3 +1,9 @@
+unscd (0.47-1) UNRELEASED; urgency=low
+
+  * New upstream release
+
+ -- Don Armstrong <don@debian.org>  Tue, 19 Oct 2010 22:21:13 -0700
+
 unscd (0.36-1) unstable; urgency=low
 
   * Initial packaging for Debian
