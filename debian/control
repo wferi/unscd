@@ -4,6 +4,9 @@ Priority: extra
 Standards-Version: 3.9.1
 Build-Depends: debhelper (>= 5), groff-base
 Maintainer: Don Armstrong <don@debian.org>
+VCS-Browser: http://websvn.donarmstrong.com/listing.php?repname=deb_pkgs&path=%2Funscd%2Ftrunk%2F
+VCS-Svn: http://svn.donarmstrong.com/deb_pkgs/unscd/trunk/
+
 
 Package: unscd
 Architecture: any
