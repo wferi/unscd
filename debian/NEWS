@@ -1,0 +1,9 @@
+unscd (0.47-2) unstable; urgency=low
+
+  * NB: Because insserv is slightly broken (#606593), we cannot provide
+    nscd, as this would break installs which hadn't already purged nscd.
+    However, if you have init scripts which depend on nscd, feel free to
+    change Provides: unscd to Provides: unscd nscd after purging nscd.
+
+ -- Don Armstrong <don@debian.org>  Sun, 12 Dec 2010 20:30:10 -0800
+
