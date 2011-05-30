@@ -2389,7 +2389,9 @@ static void special_op(const char *arg)
 		reqdata.req.key_len = arg_len;
 		memcpy(reqdata.arg, arg, arg_len);
 		xfull_write(sock, &reqdata, arg_len + sizeof(ureq));
-		printf("sent invalidate(%s) request, exiting\n", arg);
+		if (debug) {
+		  printf("sent invalidate(%s) request, exiting\n", arg);
+		}
 	}
 	exit(0);
 }

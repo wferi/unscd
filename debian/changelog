@@ -1,3 +1,10 @@
+unscd (0.47-3) unstable; urgency=low
+
+  * Only indicate that the cache is being invalidated when in debug mode
+    (Closes: #622230)
+
+ -- Don Armstrong <don@debian.org>  Mon, 30 May 2011 08:56:33 -0700
+
 unscd (0.47-2) unstable; urgency=low
 
   * Remove the Provides: nscd as a workaround for (Closes: #606588) to
