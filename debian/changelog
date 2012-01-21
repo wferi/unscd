@@ -1,3 +1,9 @@
+unscd (0.48-1) UNRELEASED; urgency=low
+
+  * New upstream release
+
+ -- Don Armstrong <don@debian.org>  Sat, 21 Jan 2012 13:36:59 -0800
+
 unscd (0.47-3) unstable; urgency=low
 
   * Only indicate that the cache is being invalidated when in debug mode
