@@ -1,13 +1,13 @@
 #!/usr/bin/make -f
 
-%: 
+%:
 	dh $@
 
 override_dh_auto_build:
 	gcc $(CFLAGS) $(LDFLAGS) -o nscd nscd.c
 
 override_dh_auto_install:
-       $(INSTALL) -d debian/unscd/usr/sbin/
-       $(INSTALL) -t debian/unscd/usr/sbin/ nscd
-       $(INSTALL) -d debian/unscd/etc/
-       $(INSTALL) -m644 -t debian/unscd/etc/ debian/nscd.conf
+	$(INSTALL) -d debian/unscd/usr/sbin/
+	$(INSTALL) -t debian/unscd/usr/sbin/ nscd
+	$(INSTALL) -d debian/unscd/etc/
+	$(INSTALL) -m644 -t debian/unscd/etc/ debian/nscd.conf
