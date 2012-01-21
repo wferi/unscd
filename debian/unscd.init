@@ -6,6 +6,10 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Starts the Micro Name Service Cache Daemon
+# Description:  This is a daemon which handles passwd and group lookups
+#		for running programs and caches the results for the next
+#		query.  You should start this daemon only if you use
+#		slow Services like NIS or NIS+
 ### END INIT INFO
 
 # NB: Because insserv is slightly broken (#606593), we cannot provide
