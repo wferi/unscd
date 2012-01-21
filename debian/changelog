@@ -1,6 +1,10 @@
 unscd (0.48-1) UNRELEASED; urgency=low
 
   * New upstream release
+  * Fix typo in nscd.conf (Closes: #656615)
+  * Add newline to nscd.conf (Closes: #656603)
+  * Switch to dh7 style rules file
+  * Update standards version; no changes
 
  -- Don Armstrong <don@debian.org>  Sat, 21 Jan 2012 13:36:59 -0800
 

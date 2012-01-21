@@ -1,67 +1,13 @@
 #!/usr/bin/make -f
 
-#DH_VERBOSE = 1
+%: 
+	dh $@
 
+override_dh_auto_build:
+	gcc $(CFLAGS) $(LDFLAGS) -o nscd nscd.c
 
-PREFIX=$(shell pwd)/debian/unscd/
-
-CFLAGS = -Wall -g
-
-INSTALL=install
-
-ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
-    CFLAGS += -O0
-else
-    CFLAGS += -O2
-endif
-
-
-build: build-stamp
-build-stamp:
-	dh_testdir
-
-	gcc $(CFLAGS) -o nscd nscd.c
-
-	touch $@
-
-clean:
-	dh_testdir
-	dh_testroot
-
-	rm -f build-stamp
-
-	rm -f nscd
-
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-	$(INSTALL) -d $(PREFIX)/usr/sbin/
-	$(INSTALL) -t $(PREFIX)/usr/sbin/ nscd
-	$(INSTALL) -d $(PREFIX)/etc/
-	$(INSTALL) -m644 -t $(PREFIX)/etc/ debian/nscd.conf
-
-binary-indep:
-
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs 
-	dh_installdocs
-	dh_installman debian/nscd.8
-	dh_installinit
-	dh_link
-	dh_strip
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-arch
-.PHONY: build clean binary-arch binary-indep binary install
+override_dh_auto_install:
+       $(INSTALL) -d debian/unscd/usr/sbin/
+       $(INSTALL) -t debian/unscd/usr/sbin/ nscd
+       $(INSTALL) -d debian/unscd/etc/
+       $(INSTALL) -m644 -t debian/unscd/etc/ debian/nscd.conf
