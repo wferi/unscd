@@ -1,4 +1,4 @@
-unscd (0.48-1) UNRELEASED; urgency=low
+unscd (0.48-1) unstable; urgency=low
 
   * New upstream release
   * Fix typo in nscd.conf (Closes: #656615)
