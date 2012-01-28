@@ -1,3 +1,10 @@
+unscd (0.48-2) unstable; urgency=low
+
+  * Actually distribute the nscd binary and configuration file (Closes:
+    #657721) and locate a brown paper bag.
+
+ -- Don Armstrong <don@debian.org>  Sat, 28 Jan 2012 09:27:24 -0800
+
 unscd (0.48-1) unstable; urgency=low
 
   * New upstream release
