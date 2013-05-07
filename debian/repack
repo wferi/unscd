@@ -1,0 +1,84 @@
+#!/usr/bin/perl
+# repack repacks unscd upstream tarball
+# and is released under the terms of the GNU GPL version 3, or any
+# later version, at your option. See the file README and COPYING for
+# more information.
+# Copyright 2013 by Don Armstrong <don@donarmstrong.com>.
+
+
+use warnings;
+use strict;
+
+use Getopt::Long;
+use Pod::Usage;
+
+=head1 NAME
+
+repack - repacks unscd upstream tarball
+
+=head1 SYNOPSIS
+
+repack --upstream-version version filename
+
+ Options:
+
+=head1 OPTIONS
+
+=over
+
+=item B<--upstream-version>
+
+Upstream version
+
+=back
+
+=head1 EXAMPLES
+
+repack --upstream-version 0.48 nscd-0.48.c
+
+=cut
+
+use vars qw($DEBUG);
+
+use Cwd;
+use File::Temp qw(tempdir);
+
+my %options = (debug           => 0,
+               help            => 0,
+               man             => 0,
+              );
+
+GetOptions(\%options,
+           'upstream_version|upstream-version=s',
+          );
+
+$DEBUG = $options{debug};
+
+my @USAGE_ERRORS;
+if (not exists $options{upstream_version}) {
+     push @USAGE_ERRORS,"You must give the  --upstream-version option";
+}
+if (@ARGV!=1) {
+     push @USAGE_ERRORS,"You must give exactly one filename on the command line";
+}
+
+
+pod2usage(join("\n",@USAGE_ERRORS)) if @USAGE_ERRORS;
+
+
+my $tdir = tempdir(CLEANUP => 1);
+my $curdir = getcwd;
+
+my $orig_dir_name = 'unscd-'.$options{upstream_version};
+my $orig_dir_path = File::Spec->catfile($tdir,$orig_dir_name);
+mkdir($orig_dir_path) or die "Unable to mkdir $orig_dir_path: $!";
+rename($ARGV[0],File::Spec->catfile($orig_dir_path,'nscd.c')) or
+    die "Unable to copy $ARGV[0] to $orig_dir_path/nscd.c: $!";
+system('tar','-zcf',File::Spec->catfile($curdir,
+                                        File::Spec->updir(),
+                                        'unscd_'.$options{upstream_version}.'.orig.tar.gz'),
+       '-C',$tdir,$orig_dir_name) == 0 or
+    die "Tar failed";
+
+__END__
+
