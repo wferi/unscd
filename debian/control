@@ -1,11 +1,11 @@
 Source: unscd
 Section: admin
 Priority: extra
-Standards-Version: 3.9.2
+Standards-Version: 3.9.3
 Build-Depends: debhelper (>= 7.0.50~), groff-base
 Maintainer: Don Armstrong <don@debian.org>
-VCS-Browser: http://websvn.donarmstrong.com/listing.php?repname=deb_pkgs&path=%2Funscd%2Ftrunk%2F
-VCS-Svn: http://svn.donarmstrong.com/deb_pkgs/unscd/trunk/
+Vcs-Browser: http://git.donarmstrong.com/unscd.git
+Vcs-Git: git://git.donarmstrong.com/unscd.git
 
 
 Package: unscd
