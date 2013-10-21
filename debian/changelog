@@ -2,6 +2,7 @@ unscd (0.51-1) unstable; urgency=low
 
   * New upstream release
   * Silence the cache invalidation output (Closes: #622230)
+  * Update to debhelper 9
 
  --
 
