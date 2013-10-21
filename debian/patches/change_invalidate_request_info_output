@@ -1,6 +1,6 @@
 From: Don Armstrong <don@debian.org>
 Subject: Silence cache invalidation requests unless in debug mode
-Origin: debian, http://websvn.donarmstrong.com/filedetails.php?repname=deb_pkgs&path=%2Funscd%2Ftrunk%2Fdebian%2Fpatches%2Fsilence_cache_invalidation
+Origin: debian
 Bug-Debian: http://bugs.debian.org/622230
 --- a/nscd.c
 +++ b/nscd.c

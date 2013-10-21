@@ -1,0 +1,86 @@
+From: Don Armstrong <don@debian.org>
+Subject: Support at least INT_MAX numbers in config
+Origin: debian
+Bug-Debian: http://bugs.debian.org/676689
+--- a/nscd.c
++++ b/nscd.c
+@@ -438,7 +438,8 @@
+ 		char *p;
+ 		unsigned long l = strtoul(str, &p, 10);
+ 		/* must not overflow int even after x1000 */
+-		if (!*p && l <= INT_MAX / 1000)
++        /* This is not required with the changes to have a unsigned long ttl */
++		if (!*p && l <= INT_MAX)
+ 			return l;
+ 	}
+ 	error_and_die("malformed or too big number '%s'", str);
+@@ -510,8 +511,8 @@
+ 	const char *user;
+ 	smallint srv_enable[3];
+ 	smallint check_files[3];
+-	unsigned pttl[3];
+-	unsigned nttl[3];
++	unsigned long pttl[3];
++	unsigned long nttl[3];
+ 	unsigned size[3];
+ } config = {
+ 	/* We try to closely mimic glibc nscd */
+@@ -746,11 +747,11 @@
+ 	return sizeof(user_req_header) + ureq->key_len;
+ }
+ 
+-static unsigned cache_age(const user_req *ureq)
++static unsigned long cache_age(const user_req *ureq)
+ {
+ 	if (!CACHED_ENTRY(ureq))
+ 		return 0;
+-	return (uint32_t) (g_now_ms - (ureq->timestamp24 << 8));
++	return (unsigned long) (g_now_ms - (ureq->timestamp24 << 8));
+ }
+ 
+ static void set_cache_timestamp(user_req *ureq)
+@@ -1271,9 +1272,9 @@
+ 	}
+ 
+ 	unsigned oldest_idx = 0;
+-	unsigned oldest_age = 0;
++	unsigned long oldest_age = 0;
+ 	for (i = 0; i < 8; i++) {
+-		unsigned age = cache_age(cacheline[i]);
++		unsigned long age = cache_age(cacheline[i]);
+ 		if (age > oldest_age) {
+ 			oldest_age = age;
+ 			oldest_idx = i;
+@@ -1290,7 +1291,7 @@
+ 		return NULL;
+ 	}
+ 	i = oldest_idx;
+-	log(L_DEBUG, "not found, freeing and reusing cache[%u][%u] (age %u)", hash, i, oldest_age);
++	log(L_DEBUG, "not found, freeing and reusing cache[%u][%u] (age %ul)", hash, i, oldest_age);
+ 	free_refcounted_ureq(&cacheline[i]);
+ 
+  ret:
+@@ -1317,11 +1318,11 @@
+ 					cached_cnt--;
+ 					free_refcounted_ureq(cp);
+ 				} else {
+-                        		unsigned age = cache_age(cached);
++                        		unsigned long age = cache_age(cached);
+ 					response_header *resp = ureq_response(cached);
+-					unsigned ttl = (resp->found ? config.pttl : config.nttl)[csrv];
++					unsigned long ttl = (resp->found ? config.pttl : config.nttl)[csrv];
+ 					if (age >= ttl) {
+-						log(L_DEBUG2, "freeing: age %u positive %d ttl %u", age, resp->found, ttl);
++						log(L_DEBUG2, "freeing: age %ul positive %d ttl %ul", age, resp->found, ttl);
+ 						cached_cnt--;
+ 						free_refcounted_ureq(cp);
+ 					} else if (srv == -1) {
+@@ -2641,7 +2642,7 @@
+ 	}
+ 
+ 	for (n = 0; n < 3; n++) {
+-		log(L_DEBUG, "%s cache enabled:%u pttl:%u nttl:%u",
++		log(L_DEBUG, "%s cache enabled:%u pttl:%ul nttl:%ul",
+ 				srv_name[n],
+ 				config.srv_enable[n],
+ 				config.pttl[n],
