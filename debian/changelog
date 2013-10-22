@@ -4,8 +4,11 @@ unscd (0.51-1) unstable; urgency=low
   * Silence the cache invalidation output (Closes: #622230)
   * Update to debhelper 9
   * Support at least INT_MAX numbers in config (Closes: #676689)
+  * Use saner settings in nscd.conf; thanks to Harald Dunkel (Closes:
+    #702211).
+  * Run unscd as the unscd user instead of root by default
 
- -- Don Armstrong <don@debian.org>  Mon, 21 Oct 2013 16:04:54 -0700
+ -- Don Armstrong <don@debian.org>  Mon, 21 Oct 2013 17:02:22 -0700
 
 unscd (0.49-1) unstable; urgency=low
 

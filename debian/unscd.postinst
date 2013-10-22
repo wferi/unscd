@@ -1,0 +1,22 @@
+set -e
+
+case "$1" in
+    configure)
+        # Create the unscd user
+	    if [ -x /usr/sbin/adduser ] && [ -x /usr/bin/getent ] && [ -x /usr/sbin/addgroup ]; then
+	        if ! getent group unscd >/dev/null 2>&1; then
+		        addgroup --system unscd;
+	        fi;
+	        if ! id -u unscd >/dev/null 2>&1; then
+		        adduser --quiet --system --ingroup unscd --no-create-home --home /var/lib/unscd unscd;
+	        fi;
+	    fi;
+	    ;;
+    *)
+	    # do nothing
+	    ;;
+esac
+
+###DEBHELPER###
+
+exit 0;
