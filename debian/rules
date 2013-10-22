@@ -3,6 +3,10 @@
 %:
 	dh $@
 
+override_dh_auto_clean:
+	rm -f nscd
+	dh_auto_clean
+
 override_dh_auto_build:
 	gcc $(CFLAGS) $(LDFLAGS) -o nscd nscd.c
 
