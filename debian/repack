@@ -42,6 +42,7 @@ use vars qw($DEBUG);
 
 use Cwd;
 use File::Temp qw(tempdir);
+use File::Copy qw(copy);
 
 my %options = (debug           => 0,
                help            => 0,
@@ -72,7 +73,7 @@ my $curdir = getcwd;
 my $orig_dir_name = 'unscd-'.$options{upstream_version};
 my $orig_dir_path = File::Spec->catfile($tdir,$orig_dir_name);
 mkdir($orig_dir_path) or die "Unable to mkdir $orig_dir_path: $!";
-rename($ARGV[0],File::Spec->catfile($orig_dir_path,'nscd.c')) or
+copy($ARGV[0],File::Spec->catfile($orig_dir_path,'nscd.c')) or
     die "Unable to copy $ARGV[0] to $orig_dir_path/nscd.c: $!";
 system('tar','-zcf',File::Spec->catfile($curdir,
                                         File::Spec->updir(),
