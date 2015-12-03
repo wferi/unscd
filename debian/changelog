@@ -1,3 +1,10 @@
+unscd (0.52-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #795618)
+  
+
+ --
+
 unscd (0.51-1) unstable; urgency=low
 
   * New upstream release
