@@ -1,7 +1,9 @@
 unscd (0.52-1) unstable; urgency=medium
 
   * New upstream release (Closes: #795618)
-  
+
+  [ Thanks to Chris Kuehl <ckuehl@ocf.berkeley.edu> ]
+  * Add manpage for unscd and nscd (Closes: #789871)
 
  --
 

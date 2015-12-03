@@ -9,6 +9,11 @@ override_dh_auto_clean:
 
 override_dh_auto_build:
 	gcc $(CFLAGS) $(LDFLAGS) -o nscd nscd.c
+	help2man --name 'nscd which does not hang' \
+		--include debian/help2man \
+		--no-info \
+		./nscd > debian/unscd.man
+	ln -fs unscd.man debian/nscd.man
 
 override_dh_auto_install:
 	install -d debian/unscd/usr/sbin/
