@@ -1,0 +1,10 @@
+[Unit]
+Description=Name Service Cache Daemon
+
+[Service]
+User=root
+ExecStart=/usr/sbin/nscd -d
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
