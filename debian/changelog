@@ -1,3 +1,9 @@
+unscd (0.52-2) unstable; urgency=medium
+
+  * Update standards version to 3.9.8, no changes.
+
+ --
+
 unscd (0.52-1) unstable; urgency=medium
 
   * New upstream release (Closes: #795618)
