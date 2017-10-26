@@ -1,0 +1,12 @@
+--- a/nscd.c
++++ b/nscd.c
+@@ -2518,6 +2518,9 @@
+ 			conffile = optarg;
+ 			break;
+ 		case 'i':
++			debug &= ~D_DAEMON;
++            if (opt_d_cnt != 0)
++                debug |= (((1U << opt_d_cnt+1) >> 1) - 1) & L_ALL;
+ 			/* invalidate */
+ 			special_op(optarg); /* exits */
+ 		case 'K':

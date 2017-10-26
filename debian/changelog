@@ -4,6 +4,7 @@ unscd (0.52-2) unstable; urgency=medium
   * Add missing #!/bin/sh to postinst (Closes: #843283)
   * Use compat level 10
   * Do not stop on upgrade, just restart after upgrade
+  * Do not always print debugging info upon invalidate. (Closes: #844447)
 
  -- Don Armstrong <don@debian.org>  Thu, 26 Oct 2017 15:52:19 -0700
 
