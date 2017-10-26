@@ -5,7 +5,7 @@ unscd (0.52-2) unstable; urgency=medium
   * Use compat level 10
   * Do not stop on upgrade, just restart after upgrade
 
- --
+ -- Don Armstrong <don@debian.org>  Thu, 26 Oct 2017 15:52:19 -0700
 
 unscd (0.52-1) unstable; urgency=medium
 
