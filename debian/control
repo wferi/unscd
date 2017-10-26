@@ -4,8 +4,8 @@ Priority: extra
 Standards-Version: 3.9.8
 Build-Depends: debhelper (>= 10), groff-base, help2man, dh-systemd
 Maintainer: Don Armstrong <don@debian.org>
-Vcs-Browser: http://git.donarmstrong.com/unscd.git
-Vcs-Git: git://git.donarmstrong.com/unscd.git
+Vcs-Browser: https://git.donarmstrong.com/unscd.git
+Vcs-Git: https://git.donarmstrong.com/unscd.git
 
 
 Package: unscd
