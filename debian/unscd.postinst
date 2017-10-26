@@ -5,7 +5,10 @@ set -e
 case "$1" in
     configure)
         # Create the unscd user
-	    if [ -x /usr/sbin/adduser ] && [ -x /usr/bin/getent ] && [ -x /usr/sbin/addgroup ]; then
+	    if which adduser >/dev/null 2>&1 &&
+               which getent >/dev/null 2>&1 &&
+               which id >/dev/null 2>&1 &&
+               which addgroup >/dev/null 2>&1; then
 	        if ! getent group unscd >/dev/null 2>&1; then
 		        addgroup --system unscd;
 	        fi;
