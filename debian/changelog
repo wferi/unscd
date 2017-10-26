@@ -2,6 +2,7 @@ unscd (0.52-2) unstable; urgency=medium
 
   * Update standards version to 3.9.8, no changes.
   * Add missing #!/bin/sh to postinst (Closes: #843283)
+  * Use compat level 10
 
  --
 
