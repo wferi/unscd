@@ -10,7 +10,7 @@ Vcs-Git: https://git.donarmstrong.com/unscd.git
 
 Package: unscd
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, lsb-base
 Conflicts: nscd
 Replaces: nscd
 Provides: nscd
