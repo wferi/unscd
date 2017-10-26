@@ -20,3 +20,6 @@ override_dh_auto_install:
 	install -t debian/unscd/usr/sbin/ nscd
 	install -d debian/unscd/etc/
 	install -m644 -t debian/unscd/etc/ debian/nscd.conf
+
+override_dh_systemd_start:
+	dh_systemd_start --restart-after-upgrade --no-stop-on-upgrade
