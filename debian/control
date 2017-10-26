@@ -1,6 +1,6 @@
 Source: unscd
 Section: admin
-Priority: extra
+Priority: optional
 Standards-Version: 4.1.1
 Build-Depends: debhelper (>= 10), groff-base, help2man, dh-systemd
 Maintainer: Don Armstrong <don@debian.org>
