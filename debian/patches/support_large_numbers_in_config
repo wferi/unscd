@@ -4,7 +4,7 @@ Origin: debian
 Bug-Debian: http://bugs.debian.org/676689
 --- a/nscd.c
 +++ b/nscd.c
-@@ -438,7 +438,8 @@
+@@ -439,7 +439,8 @@
  		char *p;
  		unsigned long l = strtoul(str, &p, 10);
  		/* must not overflow int even after x1000 */
@@ -14,7 +14,7 @@ Bug-Debian: http://bugs.debian.org/676689
  			return l;
  	}
  	error_and_die("malformed or too big number '%s'", str);
-@@ -510,8 +511,8 @@
+@@ -511,8 +512,8 @@
  	const char *user;
  	smallint srv_enable[3];
  	smallint check_files[3];
@@ -25,7 +25,7 @@ Bug-Debian: http://bugs.debian.org/676689
  	unsigned size[3];
  } config = {
  	/* We try to closely mimic glibc nscd */
-@@ -746,11 +747,11 @@
+@@ -747,11 +748,11 @@
  	return sizeof(user_req_header) + ureq->key_len;
  }
  
@@ -39,7 +39,7 @@ Bug-Debian: http://bugs.debian.org/676689
  }
  
  static void set_cache_timestamp(user_req *ureq)
-@@ -1271,9 +1272,9 @@
+@@ -1276,9 +1277,9 @@
  	}
  
  	unsigned oldest_idx = 0;
@@ -51,7 +51,7 @@ Bug-Debian: http://bugs.debian.org/676689
  		if (age > oldest_age) {
  			oldest_age = age;
  			oldest_idx = i;
-@@ -1290,7 +1291,7 @@
+@@ -1295,7 +1296,7 @@
  		return NULL;
  	}
  	i = oldest_idx;
@@ -60,7 +60,7 @@ Bug-Debian: http://bugs.debian.org/676689
  	free_refcounted_ureq(&cacheline[i]);
  
   ret:
-@@ -1317,11 +1318,11 @@
+@@ -1322,11 +1323,11 @@
  					cached_cnt--;
  					free_refcounted_ureq(cp);
  				} else {
@@ -75,7 +75,7 @@ Bug-Debian: http://bugs.debian.org/676689
  						cached_cnt--;
  						free_refcounted_ureq(cp);
  					} else if (srv == -1) {
-@@ -2641,7 +2642,7 @@
+@@ -2646,7 +2647,7 @@
  	}
  
  	for (n = 0; n < 3; n++) {
