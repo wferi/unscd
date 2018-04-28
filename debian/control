@@ -1,7 +1,7 @@
 Source: unscd
 Section: admin
 Priority: optional
-Standards-Version: 4.1.1
+Standards-Version: 4.1.4
 Build-Depends: debhelper (>= 10), groff-base, help2man, dh-systemd
 Maintainer: Don Armstrong <don@debian.org>
 Vcs-Browser: https://git.donarmstrong.com/unscd.git
