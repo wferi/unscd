@@ -145,8 +145,9 @@ vda.linux@googlemail.com
  * 0.50   add more files to watch for changes
  * 0.51   fix a case where we forget to refcount-- the cached entry
  * 0.52   make free_refcounted_ureq() tolerant to pointers to NULLs
+ * 0.53   fix INVALIDATE and SHUTDOWN requests being ignored
  */
-#define PROGRAM_VERSION "0.52"
+#define PROGRAM_VERSION "0.53"
 
 #define DEBUG_BUILD 1
 
@@ -1600,12 +1601,6 @@ static int handle_client(int i)
 		close_client(i);
 		return 0;
 	}
-	srv = type_to_srv[ureq->type];
-	if (!config.srv_enable[srv]) {
-		log(L_INFO, "service %d is disabled, dropping", srv);
-		close_client(i);
-		return 0;
-	}
 
 	hex_dump(cinfo[i].ureq, cinfo[i].bytecnt);
 
@@ -1638,6 +1633,13 @@ static int handle_client(int i)
 		log(L_INFO, "got invalidate request, flushing cache");
 		/* Frees entire cache. TODO: replace -1 with service (in ureq->reqbuf) */
 		age_cache(/*free_all:*/ 1, -1);
+		close_client(i);
+		return 0;
+	}
+
+	srv = type_to_srv[ureq->type];
+	if (!config.srv_enable[srv]) {
+		log(L_INFO, "service %d is disabled, dropping", srv);
 		close_client(i);
 		return 0;
 	}

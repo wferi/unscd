@@ -1,7 +1,0 @@
-*.man
-*.debhelper
-*.substvars
-/debian/unscd.debhelper.log
-/debian/files
-/nscd
-/debian/unscd/
