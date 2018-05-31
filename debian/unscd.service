@@ -4,6 +4,7 @@ Description=Name Service Cache Daemon
 [Service]
 User=root
 ExecStart=/usr/sbin/nscd -d
+Type=notify
 Restart=always
 
 [Install]

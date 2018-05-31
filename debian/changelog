@@ -1,3 +1,10 @@
+unscd (0.53-1.1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * Add systemd notification support for startup error reporting.
+
+ -- Ferenc Wágner <wferi@debian.org>  Thu, 31 May 2018 12:03:28 +0200
+
 unscd (0.53-1) unstable; urgency=medium
 
   * New upstream revision
