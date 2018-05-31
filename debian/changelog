@@ -3,6 +3,7 @@ unscd (0.53-1.1) UNRELEASED; urgency=medium
   * Non-maintainer upload.
   * Add systemd notification support for startup error reporting.
   * Move Homepage into the source package (for the PTS) and use HTTPS.
+  * Enable hardening.
 
  -- Ferenc Wágner <wferi@debian.org>  Thu, 31 May 2018 12:03:28 +0200
 
