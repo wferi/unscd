@@ -1,5 +1,6 @@
 [Unit]
 Description=Name Service Cache Daemon
+Documentation=man:unscd
 
 [Service]
 User=root
