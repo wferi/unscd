@@ -1,4 +1,4 @@
 version=3
-http://busybox.net/~vda/unscd/nscd-([\d\.]+).c \
+https://busybox.net/~vda/unscd/nscd-([\d\.]+).c \
   debian \
   perl debian/repack

@@ -5,6 +5,7 @@ unscd (0.53-1.1) UNRELEASED; urgency=medium
   * Move Homepage into the source package (for the PTS) and use HTTPS.
   * Enable hardening.
   * Let systemctl help find the man page.
+  * Switch to HTTPS in the watch file.
 
  -- Ferenc Wágner <wferi@debian.org>  Thu, 31 May 2018 12:03:28 +0200
 
