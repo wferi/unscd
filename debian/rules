@@ -14,7 +14,7 @@ override_dh_auto_clean:
 	dh_auto_clean
 
 override_dh_auto_build:
-	gcc $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o nscd nscd.c $(libsystemd-flags)
+	gcc -Wall -Wextra $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o nscd nscd.c $(libsystemd-flags)
 	help2man --name 'nscd which does not hang' \
 		--include debian/help2man \
 		--no-info \
