@@ -3,27 +3,31 @@ Date: Thu, 31 May 2018 11:56:10 +0200
 Subject: Notify systemd about successful startup
 
 ---
- nscd.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ nscd.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/nscd.c b/nscd.c
-index 828eb17..4cbd7b1 100644
+index 828eb17..9911b40 100644
 --- a/nscd.c
 +++ b/nscd.c
-@@ -99,6 +99,8 @@ vda.linux@googlemail.com
+@@ -99,6 +99,10 @@ vda.linux@googlemail.com
  /* For inet_ntoa (for debug build only) */
  #include <arpa/inet.h>
  
++#ifdef HAVE_LIBSYSTEMD
 +#include <systemd/sd-daemon.h>
++#endif
 +
  /*
   * 0.21 add SEGV reporting to worker
   * 0.22 don't do freeaddrinfo() in GETAI worker, it's crashy
-@@ -2661,6 +2663,8 @@ int main(int argc, char **argv)
+@@ -2661,6 +2665,10 @@ int main(int argc, char **argv)
  		config.nttl[n] *= 1000;
  	}
  
++#ifdef HAVE_LIBSYSTEMD
 +	sd_notify (0, "READY=1");
++#endif
 +
  	main_loop();
  

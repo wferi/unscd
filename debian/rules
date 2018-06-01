@@ -2,6 +2,10 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
+ifneq ($(wildcard /usr/include/systemd/sd-daemon.h),)
+libsystemd-flags = -DHAVE_LIBSYSTEMD -lsystemd
+endif
+
 %:
 	dh $@
 
@@ -10,7 +14,7 @@ override_dh_auto_clean:
 	dh_auto_clean
 
 override_dh_auto_build:
-	gcc $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o nscd nscd.c -lsystemd
+	gcc $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o nscd nscd.c $(libsystemd-flags)
 	help2man --name 'nscd which does not hang' \
 		--include debian/help2man \
 		--no-info \

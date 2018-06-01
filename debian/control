@@ -3,7 +3,7 @@ Section: admin
 Priority: optional
 Standards-Version: 4.1.4
 Build-Depends: debhelper (>= 10), groff-base, help2man,
- libsystemd-dev
+ libsystemd-dev [linux-any]
 Maintainer: Don Armstrong <don@debian.org>
 Homepage: https://busybox.net/~vda/unscd/
 Vcs-Browser: https://git.donarmstrong.com/unscd.git
