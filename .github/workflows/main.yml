@@ -4,7 +4,7 @@ jobs:
   print_python_version:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/setup-python@v2
+    - uses: actions/setup-python@v4
       with:
         python-version: 3.7
-    - run: python -v
+    - run: echo $PATH; python --version
