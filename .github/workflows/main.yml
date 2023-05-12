@@ -8,3 +8,5 @@ jobs:
       with:
         python-version: 3.7
     - run: echo $PATH; python --version
+    - run: python -m venv venv
+    - run: ls -R venv
