@@ -10,3 +10,4 @@ jobs:
     - run: echo $PATH; python3 --version
     - run: python3 -m venv venv
     - run: ls -R venv
+    - run: ls /usr/bin
